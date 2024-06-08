@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--font-base: 1rem;
+		--font-scale: 1.25;
+		--text-2xs: calc(var(--text-xs) / var(--font-scale));
+		--text-xs: calc(var(--text-sm) / var(--font-scale));
+		--text-sm: calc(var(--font-base) / var(--font-scale));
+		--text-lg: calc(var(--font-base) * var(--font-scale));
+		--text-xl: calc(var(--text-lg) * var(--font-scale));
+		--text-2xl: calc(var(--text-xl) * var(--font-scale));
+		--text-3xl: calc(var(--text-2xl) * var(--font-scale));
+		--text-4xl: calc(var(--text-3xl) * var(--font-scale));
+
+		--background: 0 0% 9%; /* #181616 */
+		--foreground: 120 3% 78%; /* #c5c9c5 */
+		--card: 0 0% 5%; /* #0d0c0c */
+		--card-foreground: 47 21% 69%; /* #c4b28a */
+		--popover: 0 0% 7%; /* #12120f */
+		--popover-foreground: 45 23% 80%; /* #C8C093 */
+		--primary: 207 19% 54%; /* #72A7BC */
+		--primary-foreground: 0 0% 7%; /* #12120f */
+		--secondary: 45 23% 80%; /* #C8C093 */
+		--secondary-foreground: 0 0% 7%; /* #12120f */
+		--accent: 27 29% 60%; /* #b6927b */
+		--accent-foreground: 0 0% 7%; /* #12120f */
+		--destructive: 358 50% 59%; /* #c4746e */
+		--destructive-foreground: 0 0% 9%; /* #181616 */
+		--muted: 0 0% 11%; /* #1A1A1A */
+		--muted-foreground: 148 8% 69%; /* #a6a69c */
+		--border: 0 0% 15%; /* #262626 */
+		--input: 0 0% 15%; /* #262626 */
+		--ring: 207 19% 54%; /* #72A7BC */
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+}
