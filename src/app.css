@@ -32,7 +32,7 @@
 		--muted: 0 0% 11%; /* #1A1A1A */
 		--muted-foreground: 148 8% 69%; /* #a6a69c */
 		--border: 0 0% 15%; /* #262626 */
-		--input: 0 0% 15%; /* #262626 */
+		--input: 148 8% 69%; /* #a6a69c */
 		--ring: 207 19% 54%; /* #72A7BC */
 
 		--radius: 0.5rem;
@@ -46,3 +46,4 @@
 		@apply bg-background text-foreground;
 	}
 }
+

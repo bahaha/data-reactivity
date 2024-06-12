@@ -62,6 +62,12 @@ export default {
 			lg: 'var(--radius)',
 			md: 'calc(var(--radius) - 2px)',
 			sm: 'calc(var(--radius) - 4px)'
+		},
+		height: {
+			golden: '61.8vh'
+		},
+		maxWidth: {
+			golden: '61.8%'
 		}
 	},
 

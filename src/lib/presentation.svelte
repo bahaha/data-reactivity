@@ -15,7 +15,6 @@
 	$effect(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)));
 
 	function handleKeyboardStrike(evt: KeyboardEvent) {
-		evt.preventDefault();
 		const code = evt.code as KeyStroke;
 		keyStrokeHandlers[code]?.(props, {
 			get slide() {
