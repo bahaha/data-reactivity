@@ -2,17 +2,25 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Input } from '$lib/components/ui/input';
 
-	let name = $state('Demo');
+	type ReactivityDemoProps = {
+		name?: string;
+	};
+
+	const { name: defaultName }: ReactivityDemoProps = $props();
+
+	let name = $state(defaultName ?? 'Demo');
 </script>
 
-<div class="max-w-golden my-8 ml-16 space-y-4">
-	<fieldset class="space-y-2">
-		<Label>Name</Label>
-		<Input bind:value={name} />
-	</fieldset>
+<div class="my-8 ml-12 max-w-[clamp(24rem,60vw,60rem)] space-y-4">
+	<form>
+		<fieldset class="space-y-2">
+			<Label for="demo__name" class="text-responsive-sm">Name</Label>
+			<Input id="demo__name" class="text-responsive-sm" bind:value={name} />
+		</fieldset>
+	</form>
 	<h3
-		class="border-primary rounded-md border-4 border-dashed px-2 py-4 text-xl font-bold tracking-wider"
+		class="rounded-md border-4 border-dashed border-primary px-2 py-4 text-responsive font-bold tracking-wider"
 	>
-		Great job, <span class="text-primary mx-1">{name}</span>!
+		Great job, <span class="mx-1 text-primary">{name}</span>!
 	</h3>
 </div>

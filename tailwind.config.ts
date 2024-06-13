@@ -19,7 +19,9 @@ export default {
 			xl: 'var(--text-xl)',
 			'2xl': 'var(--text-2xl)',
 			'3xl': 'var(--text-3xl)',
-			'4xl': 'var(--text-4xl)'
+			'4xl': 'var(--text-4xl)',
+			'responsive-sm': 'clamp(var(--text-sm), 2vw, var(--text-2xl))',
+			responsive: 'clamp(var(--text-xl), 2vw, 5rem)'
 		},
 		extend: {
 			colors: {
@@ -55,19 +57,21 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				}
+				},
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))'
+			},
+			height: {
+				golden: '61.8dvh'
+			},
+			maxWidth: {
+				golden: '61.8vw'
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
 			}
-		},
-		borderRadius: {
-			lg: 'var(--radius)',
-			md: 'calc(var(--radius) - 2px)',
-			sm: 'calc(var(--radius) - 4px)'
-		},
-		height: {
-			golden: '61.8vh'
-		},
-		maxWidth: {
-			golden: '61.8%'
 		}
 	},
 

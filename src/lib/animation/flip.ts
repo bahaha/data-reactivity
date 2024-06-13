@@ -77,6 +77,14 @@ export function createFlipAnimation(
 		return promise;
 	}
 
+	function snapshot() {
+		const nodes = getAnimateNodes();
+		const measures = nodes.map((node) => node.getBoundingClientRect());
+		for (let i = 0; i < nodes.length; i++) {
+			fromRect.set(nodes[i], measures[i]);
+		}
+	}
+
 	function animate(options: Partial<FlipOptions> = {}) {
 		const { promise, resolve } = Promise.withResolvers<void>();
 		const {
@@ -111,7 +119,5 @@ export function createFlipAnimation(
 		return promise;
 	}
 
-	function cancel() {}
-
-	return { animate, cancel };
+	return { animate, snapshot };
 }

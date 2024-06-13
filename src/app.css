@@ -34,7 +34,8 @@
 		--border: 0 0% 15%; /* #262626 */
 		--input: 148 8% 69%; /* #a6a69c */
 		--ring: 207 19% 54%; /* #72A7BC */
-
+		--success: 103 17% 50%; /* #76946a */
+		--warning: 39 39% 59%; /* #c0a36e */
 		--radius: 0.5rem;
 	}
 
@@ -46,4 +47,3 @@
 		@apply bg-background text-foreground;
 	}
 }
-
