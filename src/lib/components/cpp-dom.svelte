@@ -35,7 +35,7 @@
 		</DOM>
 		<DOM tagName="h3">
 			{#snippet attributes()}
-				<span>text: Great job, {name}</span>
+				<span>text: great job, {name}</span>
 			{/snippet}
 		</DOM>
 	</DOM>

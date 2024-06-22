@@ -54,7 +54,7 @@
 		</div>
 	{/if}
 	{#if children}
-		<div>
+		<div class="flex flex-wrap items-start gap-2">
 			{@render children()}
 		</div>
 	{/if}

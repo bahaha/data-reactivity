@@ -21,7 +21,7 @@ export default {
 			'3xl': 'var(--text-3xl)',
 			'4xl': 'var(--text-4xl)',
 			'responsive-sm': 'clamp(var(--text-sm), 2vw, var(--text-2xl))',
-			responsive: 'clamp(var(--text-xl), 2vw, 5rem)'
+			responsive: 'clamp(var(--text-xl), 1.5vw, 5rem)'
 		},
 		extend: {
 			colors: {

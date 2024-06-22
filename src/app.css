@@ -46,4 +46,23 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+
+	code {
+		@apply grid p-1;
+
+		.line {
+			counter-increment: line;
+			@apply py-1;
+		}
+
+		.line:not(:last-of-type)::before {
+			content: counter(line);
+			padding-inline: 0.5rem;
+			opacity: 0.4;
+		}
+
+		.highlighted {
+			@apply bg-primary/20;
+		}
+	}
 }

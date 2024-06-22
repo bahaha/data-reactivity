@@ -21,6 +21,6 @@
 	<h3
 		class="rounded-md border-4 border-dashed border-primary px-2 py-4 text-responsive font-bold tracking-wider"
 	>
-		Great job, <span class="mx-1 text-primary">{name}</span>!
+		Hey <span class="mx-1 text-primary">{name}</span>, great job!
 	</h3>
 </div>

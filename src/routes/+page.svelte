@@ -14,7 +14,11 @@
 
 <Presentation onStepChange={() => grid?.animate()}>
 	{#snippet children(state)}
-		<WebCore slide={state.step} />
+		{#if state.slide === 0}
+			<WebCore slide={state.step} />
+		{:else if state.slide === 1}
+			<div>VDOM</div>
+		{/if}
 	{/snippet}
 </Presentation>
 

@@ -30,6 +30,11 @@ const keyLeftHandler: KeyStrokeHandler = (props, state) => {
 };
 
 const fullScreenHandler: KeyStrokeHandler = () => {
+	const activeElement = document.activeElement as HTMLElement;
+	if (activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'INPUT') {
+		return;
+	}
+
 	const isFullScreen = document.fullscreenElement !== null;
 	if (isFullScreen) {
 		document.exitFullscreen();
