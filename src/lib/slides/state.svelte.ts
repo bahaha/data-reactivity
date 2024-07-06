@@ -16,7 +16,7 @@ function createDemoState() {
             <input id="name" type="text" value="${name}" />
         </fieldset>
     </form>
-    <h3>${greeting}<h3>
+    <h3>${greeting}</h3>
     `);
 
 	const vDomReactivity = $derived(`let name = ''; let vDOM = createVDOM(); let prevVDOM; let elems;

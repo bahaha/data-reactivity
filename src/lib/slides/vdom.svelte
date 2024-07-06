@@ -47,13 +47,20 @@
 			container: slide === 0
 		}),
 		jsDomTree: cn({ 'col-start-1': slide === 0, 'col-start-2': slide > 0 }),
-		cppDom: cn({ 'col-start-2': slide === 0, hidden: slide > 0 }),
-		vdomJs: cn({ hidden: slide !== 1, 'row-start-1 col-start-1': slide === 1 }),
-		keyFactors: cn({ hidden: slide < 2, 'row-start-1 col-start-1': slide >= 2 })
+		cppDom: cn({ 'col-start-2 z-50': slide === 0, hidden: slide > 0 }),
+		vdomJs: cn({ hidden: slide !== 1, 'row-start-1 col-start-1 z-50': slide === 1 }),
+		keyFactors: cn({ hidden: slide < 2, 'row-start-1 col-start-1 z-50': slide >= 2 })
 	});
 </script>
 
-<div class={cn('vdom__container', styles.container)} data-slide={slide}>
+<main class={cn('vdom__container relative', styles.container)} data-slide={slide}>
+	<div class="absolute z-10 flex translate-y-[150%] gap-4 opacity-10">
+		<img class="h-40" src="/React.png" alt="React" />
+		<img class="h-40" src="/vue-uwu.png" alt="Vue" />
+		{#if slide != 1}
+			<img class="h-40" src="/angular-uwu.png" alt="Angular" />
+		{/if}
+	</div>
 	<JsDomTree
 		class={cn('vdom__js-dom-tree', styles.jsDomTree)}
 		name={_state.name}
@@ -130,4 +137,4 @@
 			</ul>
 		</ul>
 	</div>
-</div>
+</main>

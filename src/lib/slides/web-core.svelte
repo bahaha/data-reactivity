@@ -79,7 +79,10 @@
 	});
 </script>
 
-<div class={cn('web-core__container grid items-center gap-4', styles.container)} data-slide={slide}>
+<main
+	class={cn('web-core__container grid items-center gap-4', styles.container)}
+	data-slide={slide}
+>
 	<div class={cn('web-core__js rounded text-responsive', styles.js)}>
 		{@html jsDom}
 	</div>
@@ -100,4 +103,4 @@
 	<Browser class={cn('web-core__preview', styles.preview)}>
 		<ReactivityDemo bind:name={_state.name} greeting={_state.greeting} />
 	</Browser>
-</div>
+</main>
