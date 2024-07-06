@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Presentation } from '$lib';
 	import { createFlipAnimation } from '$lib/animation';
-	import { WebCore } from '$lib/slides';
+	import { WebCore, VDom } from '$lib/slides';
 	import { onMount } from 'svelte';
 
 	let grid: ReturnType<typeof createFlipAnimation> | undefined;
@@ -17,7 +17,7 @@
 		{#if state.slide === 0}
 			<WebCore slide={state.step} />
 		{:else if state.slide === 1}
-			<div>VDOM</div>
+			<VDom slide={state.step} />
 		{/if}
 	{/snippet}
 </Presentation>

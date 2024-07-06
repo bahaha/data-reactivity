@@ -5,13 +5,13 @@
 	import { codeToHtml } from 'shiki';
 	import { transformerMetaHighlight } from '@shikijs/transformers';
 	import { onMount } from 'svelte';
+	import _state from './state.svelte';
 
 	type WebCoreProps = {
 		slide?: number;
 	};
 
 	let { slide: _slide = 0 }: WebCoreProps = $props();
-	let name = $state('CC');
 	let html = $state('');
 	let jsDom = $state('');
 	const jsVisualizerSteps = 3;
@@ -20,34 +20,17 @@
 	const slide = $derived(_slide % nSlides);
 	const currJsStep = $derived(slide - webCoreSlides + 1);
 
-	const markup = $derived(`
-    <form>
-        <fieldset>
-            <label for="name">Name</label>
-            <input id="name" type="text" value="${name}" />
-        </fieldset>
-    </form>
-    <h3>Hey ${name}, great job!<h3>
-    `);
-
 	let highlightedLinesOfSteps = ['{1}', '{2}', '{3-5}', '{6}'];
-	const jsReactivity = `    const input = document.getElementById('name');
-    const h3 = document.querySelector('h3');
-    function handleInput(evt) {
-        h3.innerText = \`Hey \${evt.target.value}, great job!\`;
-    }
-    input.addEventListener('change', handleInput);
-    `;
 
 	$effect(() => {
-		codeToHtml(markup, {
+		codeToHtml(_state.markup, {
 			lang: 'html',
 			theme: 'catppuccin-mocha'
 		}).then((rendered) => void (html = rendered));
 	});
 
 	$effect(() => {
-		codeToHtml(jsReactivity, {
+		codeToHtml(_state.jsReactivity, {
 			lang: 'javascript',
 			theme: 'catppuccin-mocha',
 			transformers: [transformerMetaHighlight()],
@@ -103,9 +86,18 @@
 	<div class={cn('web-core__html rounded text-responsive', styles.html)}>
 		{@html html}
 	</div>
-	<JsMemoryDOM class={cn('web-core__js-memory-dom', styles.jsMemoryDom)} {name} step={currJsStep} />
-	<CppDom class={cn('web-core__cpp-dom', styles.cppDom)} {name} />
+	<JsMemoryDOM
+		class={cn('web-core__js-memory-dom', styles.jsMemoryDom)}
+		name={_state.name}
+		greeting={_state.greeting}
+		step={currJsStep}
+	/>
+	<CppDom
+		class={cn('web-core__cpp-dom', styles.cppDom)}
+		name={_state.name}
+		greeting={_state.greeting}
+	/>
 	<Browser class={cn('web-core__preview', styles.preview)}>
-		<ReactivityDemo {name} />
+		<ReactivityDemo bind:name={_state.name} greeting={_state.greeting} />
 	</Browser>
 </div>

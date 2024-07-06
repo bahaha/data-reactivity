@@ -4,11 +4,10 @@
 
 	type ReactivityDemoProps = {
 		name?: string;
+		greeting?: string;
 	};
 
-	const { name: defaultName }: ReactivityDemoProps = $props();
-
-	let name = $state(defaultName ?? 'Demo');
+	let { name = $bindable('Demo'), greeting }: ReactivityDemoProps = $props();
 </script>
 
 <div class="my-8 ml-12 max-w-[clamp(24rem,60vw,60rem)] space-y-4">
@@ -21,6 +20,6 @@
 	<h3
 		class="rounded-md border-4 border-dashed border-primary px-2 py-4 text-responsive font-bold tracking-wider"
 	>
-		Hey <span class="mx-1 text-primary">{name}</span>, great job!
+		{greeting}
 	</h3>
 </div>

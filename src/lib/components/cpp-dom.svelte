@@ -4,9 +4,10 @@
 	type CppDomProps = {
 		class?: string;
 		name?: string;
+		greeting?: string;
 	};
 
-	const { class: className, name = '' }: CppDomProps = $props();
+	const { class: className, name = '', greeting = '' }: CppDomProps = $props();
 </script>
 
 <aside
@@ -35,7 +36,7 @@
 		</DOM>
 		<DOM tagName="h3">
 			{#snippet attributes()}
-				<span>text: great job, {name}</span>
+				<span>text: {greeting}</span>
 			{/snippet}
 		</DOM>
 	</DOM>

@@ -4,10 +4,11 @@
 	type JsMemoryDomProps = {
 		class?: string;
 		name?: string;
+		greeting?: string;
 		step: number;
 	};
 
-	const { class: className, name = '', step }: JsMemoryDomProps = $props();
+	const { class: className, name = '', greeting = '', step }: JsMemoryDomProps = $props();
 </script>
 
 {#snippet ref()}
@@ -37,7 +38,7 @@
 			<h5 class="">h3:</h5>
 			<DOM tagName="HTMLDivElement" variant="primary">
 				{#snippet attributes()}
-					<span>innerText: Hey, {name}, great job!</span>
+					<span>innerText: {greeting}</span>
 					{@render ref()}
 				{/snippet}
 			</DOM>
