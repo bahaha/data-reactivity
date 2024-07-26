@@ -20,8 +20,9 @@ export default {
 			'2xl': 'var(--text-2xl)',
 			'3xl': 'var(--text-3xl)',
 			'4xl': 'var(--text-4xl)',
-			'responsive-sm': 'clamp(var(--text-sm), 2vw, var(--text-2xl))',
-			responsive: 'clamp(var(--text-lg), 1.5vw, 5rem)'
+			full: '8vw',
+			'responsive-sm': 'clamp(var(--text-sm), 1.5vw, var(--text-2xl))',
+			responsive: 'clamp(var(--text-lg), 1.7vw, 5rem)'
 		},
 		extend: {
 			colors: {
@@ -71,6 +72,10 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				lemon: 'Lemon Tuesday',
+				dank: 'Dank Mono'
 			}
 		}
 	},

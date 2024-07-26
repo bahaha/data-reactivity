@@ -1,31 +1,24 @@
 <script lang="ts">
 	import { Presentation } from '$lib';
-	import { createFlipAnimation } from '$lib/animation';
-	import { WebCore, VDom, Observer, SvelteCompiler } from '$lib/slides';
-	import { onMount } from 'svelte';
-
-	let grid: ReturnType<typeof createFlipAnimation> | undefined;
-	onMount(() => {
-		// const boxes = Array.from(document.querySelectorAll<HTMLElement>('.box'));
-		// grid = createFlipAnimation(boxes, { duration: 300, stagger: 60 });
-		// grid.animate();
-	});
+	import { WebCore, VDom, Observer, Signal, SvelteCompiler, Agenda, Bonus } from '$lib/slides';
 </script>
 
-<Presentation onStepChange={() => grid?.animate()}>
+<Presentation>
 	{#snippet children(state)}
 		{#if state.slide === 0}
-			<WebCore slide={state.step} />
+			<Agenda slide={state.step} />
 		{:else if state.slide === 1}
-			<VDom slide={state.step} />
+			<WebCore slide={state.step} />
 		{:else if state.slide === 2}
-			<SvelteCompiler slide={state.step} />
+			<VDom slide={state.step} />
 		{:else if state.slide === 3}
-			<Observer slide={state.step} />
+			<SvelteCompiler slide={state.step} />
 		{:else if state.slide === 4}
-			Signal Pattern
+			<Observer slide={state.step} />
+		{:else if state.slide === 5}
+			<Signal slide={state.step} />
+		{:else}
+			<Bonus slide={state.step} />
 		{/if}
 	{/snippet}
 </Presentation>
-
-<style></style>

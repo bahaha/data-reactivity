@@ -9,7 +9,7 @@
 		slide: number;
 	};
 
-	const nSlides = 2;
+	const nSlides = 3;
 	const { slide: _slide }: ObserverProps = $props();
 	const slide = $derived(_slide % nSlides);
 
@@ -17,8 +17,8 @@
 	let compiledInstance = $state('');
 	let compiledFragmentFn = $state('');
 
-	const svelteReactivity = $derived(`<script>
-    let name = '${_state.name}';
+	const svelteReactivity = `<script>
+    let name = 'CC';
 	   $: greeting = \`Hey \${name}, great job!\`;
 <\/script>
 
@@ -29,7 +29,7 @@
 	</fieldset>
 </form>
 <h3>{greeting}</h3>
-    `);
+    `;
 
 	$effect(() => {
 		codeToHtml(svelteReactivity, {
@@ -62,7 +62,7 @@
         m(target, anchor) {
             /* ... mount: append nodes as children, bind values */
             if (!mounted) {
-                dispose = listen(input, "input", /* input_input_handler */ ctx[1]);
+                dispose = listen(input, "input", /* input_input_handler */ ctx[2]);
                 mounted = true;
             }
         },
@@ -70,7 +70,7 @@
             if (dirty & /*name*/ 1 && input.value !== /*name*/ ctx[0]) {
                 set_input_value(input, /*name*/ ctx[0]);
             }
-            if (dirty & /*name*/ 1) set_data(/*text node*/ t4, /*name*/ ctx[0]);
+            if (dirty & /*greeting*/ 2) set_data(/*text node*/ t3, /*greeting*/ ctx[1]);
         },
         ... /* other methods */
     }
@@ -93,37 +93,45 @@
 
 	const styles = $derived({
 		container: cn('grid gap-2', {
-			'grid-cols-[4fr_6fr]': slide !== 0,
-			'grid-cols-[6fr_4fr]': slide === 0
+			'grid-cols-[4fr_6fr]': slide !== 1,
+			'grid-cols-[6fr_4fr]': slide === 1
 		}),
-		demo: cn('translate-x-12', { hidden: slide !== 0 }),
-		svelteTpl: cn('rounded z-50', { hidden: slide !== 0 }),
-		instanceFn: cn('rounded text-sm z-50', { hidden: slide === 0 }),
-		fragmentFn: cn('rounded', { hidden: slide === 0 })
+		demo: cn('translate-x-12', { hidden: slide !== 1 }),
+		svelteTpl: cn('rounded z-50', { hidden: slide !== 1 }),
+		instanceFn: cn('rounded text-sm z-50', { hidden: slide === 1 }),
+		fragmentFn: cn('rounded', { hidden: slide === 1 })
 	});
 </script>
 
-<div class="relative">
-	<img class="absolute z-10 translate-y-1/2 opacity-10" src="/svelte.png" alt="Svelte Logo" />
-	<main class={cn('compiler__container', styles.container)} data-slide={slide}>
-		<div class={cn('compiler__svelteTpl', styles.svelteTpl)}>
-			{@html svelteTpl}
-		</div>
-		<div class={cn('compiler__instanceFn', styles.instanceFn)}>
-			{@html compiledInstance}
-			<a
-				class="mt-4 block text-center text-xl text-primary underline"
-				href="https://svelte.dev/repl/26c5b13ca8ea44d597ed4ea1e7a41ea9"
-				target="_blank"
-			>
-				Source
-			</a>
-		</div>
-		<div class={cn('compiler__fragmentFn', styles.fragmentFn)}>
-			{@html compiledFragmentFn}
-		</div>
-		<Browser class={cn('compiler__demo', styles.demo)}>
-			<ReactivityDemo bind:name={_state.name} greeting={_state.greeting} />
-		</Browser>
+{#if slide === 0}
+	<main class="container text-center" data-slide={slide}>
+		<h1 class="font-lemon text-full font-bold">
+			Without <span class="text-primary">V-DOM?</span>
+		</h1>
 	</main>
-</div>
+{:else}
+	<div class="relative">
+		<img class="absolute z-10 translate-y-1/2 opacity-10" src="/svelte.png" alt="Svelte Logo" />
+		<main class={cn('compiler__container', styles.container)} data-slide={slide}>
+			<div class={cn('compiler__svelteTpl', styles.svelteTpl)}>
+				{@html svelteTpl}
+			</div>
+			<div class={cn('compiler__instanceFn', styles.instanceFn)}>
+				{@html compiledInstance}
+				<a
+					class="mt-4 block text-center text-xl text-primary underline"
+					href="https://svelte.dev/repl/26c5b13ca8ea44d597ed4ea1e7a41ea9"
+					target="_blank"
+				>
+					Source
+				</a>
+			</div>
+			<div class={cn('compiler__fragmentFn', styles.fragmentFn)}>
+				{@html compiledFragmentFn}
+			</div>
+			<Browser class={cn('compiler__demo', styles.demo)}>
+				<ReactivityDemo bind:name={_state.name} greeting={_state.greeting} />
+			</Browser>
+		</main>
+	</div>
+{/if}

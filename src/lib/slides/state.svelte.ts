@@ -19,27 +19,28 @@ function createDemoState() {
     <h3>${greeting}</h3>
     `);
 
-	const vDomReactivity = $derived(`let name = ''; let vDOM = createVDOM(); let prevVDOM; let elems;
+	const vDomReactivity = $derived(`let name = ''; /* state */
+let vDOM = createVDOM(); let wipDOM; let elems;
 function handle(evt) { name = evt.target.value; }
 function createVDOM() { return [ ["input", name, handle], ["h3", \`Hey \${name}, great job!\`] ] }
 function updateDOM() {
     if (!elems) {
-        elems = vDOM.map(convert);
+        elems = vDOM.map(createElement);
         document.body.append(...elems);
         return;
     }
-    prevVDOM = [...elems];
+    wipDOM = [...vDOM];
     vDOM = createVDOM();
-    findDiff(prevVDOM, vDOM);
+    findDiff(wipDOM, vDOM);
 }
-function convert(props) {
+function createElement(props) {
     const el = document.createElement(props[0]);
     update(el, props);
     return el;
 }
 function update(el, props) {
     el.value = props[1];
-    el.innerText = props[2];
+    el.innerText = props[1];
     el.onchange = props[2];
 }
 function findDiff(prev, curr) {

@@ -11,10 +11,10 @@
 </script>
 
 <aside
-	class={cn('border-success space-x-1 space-y-2 rounded-md border-4 border-dotted p-1', className)}
+	class={cn('space-x-1 space-y-2 rounded-md border-4 border-dotted border-success p-1', className)}
 >
-	<div class="bg-success rounded py-1 text-center font-bold text-background">
-		Documnet Object Model (V8 C++)
+	<div class="rounded bg-success py-1 text-center font-bold text-background">
+		Document Object Model (V8 C++)
 	</div>
 	<DOM tagName="body" variant="muted" class="border border-muted-foreground">
 		<DOM tagName="form">

@@ -44,11 +44,11 @@
 	}
 
 	body {
-		@apply bg-background text-foreground;
+		@apply font-dank bg-background text-foreground;
 	}
 
 	code {
-		@apply grid p-1;
+		@apply font-dank grid p-1;
 
 		.line {
 			counter-increment: line;
@@ -64,5 +64,18 @@
 		.highlighted {
 			@apply bg-primary/20;
 		}
+	}
+
+	.shiki.has-focused .line:not(.focused) {
+		filter: blur(0.2rem);
+		opacity: 0.5;
+		transition:
+			filter 0.35s,
+			opacity 0.35s;
+	}
+
+	.shiki.has-focused:hover .line:not(.focused) {
+		filter: none;
+		opacity: 1;
 	}
 }

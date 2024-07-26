@@ -59,7 +59,7 @@
 	const styles = $derived({
 		container: cn({
 			'grid-cols-1 container ': slide === 0,
-			'pl-2 grid-cols-[4fr_4fr_3fr] grid-rows-[4fr_6fr]': slide > 0
+			'pl-2 grid-cols-[2fr_5fr_3fr] grid-rows-2': slide > 0
 		}),
 		preview: cn({
 			'col-start-1': slide === 0,
